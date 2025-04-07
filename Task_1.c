@@ -39,7 +39,7 @@ int main()
 
 void filter_ascending(char* string_1)
 {
-    for (int i = 1; i < strlen(string_1); i++)
+    for (int i = 1; i < strlen(string_1); i++)      // HELLO PEOPLE!!!!!
     {
         for (int j = 0; string_1[j+2] != '\0'; j++)
         {
