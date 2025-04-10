@@ -26,11 +26,13 @@ argument, only the filtered string must be printed onto the terminal.
 
 void filter_ascending(char* string_1);
 
-int main()
+int main(int argc, char* argv[])
 {
+    if (argc < 2)
+    return 1;  // Exit if no input is provided
+
     char string_1[20];
-    printf("Enter the string: ");
-    scanf("%s", string_1);
+    strncpy(string_1, argv[1], sizeof(string_1));
     filter_ascending(string_1);
     printf("The modified string is: ");
     printf("%s\n", string_1);
