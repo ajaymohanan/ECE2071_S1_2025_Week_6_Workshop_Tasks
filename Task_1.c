@@ -41,11 +41,16 @@ void filter_ascending(char* string_1)
 {
     for (int i = 1; i < strlen(string_1); i++)
     {
-        for (int j = 0; string_1[j+2] != '\0'; j++) //123456789123456789
+        // changes: string_1[j + 2] -> string_1[j+1]
+        // only reach the first NULL then stop, not the second one
+        for (int j = 0; string_1[j+1] != '\0'; j++)
         {
             if (string_1[j] > string_1[j+1])
             {
-                for (int k = 0; string_1[k] != '\0'; k++)
+                // changes: k = 0 -> k = j+1:
+                // k = 0 will replace the first char with the adjacent, rewind all the char to start
+                // k = j + 1, will keep updating the charactar once hit the 
+                for (int k = j+1; string_1[k] != '\0'; k++)
                 {
                     string_1[k] = string_1[k+1];
                 }
