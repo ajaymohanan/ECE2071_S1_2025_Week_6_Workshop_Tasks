@@ -97,7 +97,12 @@ void inOrder(struct node* treePtr)
 
 void delete_tree(struct node** treePtr)
 {
-       free(*treePtr);
+	if (*treePtr == NULL){ 
+		return;
+	}
+
 	   delete_tree(&((*treePtr)->leftPtr));
        delete_tree(&((*treePtr)->rightPtr));
+	   free(*treePtr);
+	   *treePtr = NULL;// free then insert NULL
 }
