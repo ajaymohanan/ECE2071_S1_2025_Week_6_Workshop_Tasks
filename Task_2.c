@@ -41,7 +41,7 @@ struct node
 void insert_node(struct node** treePtr, int data);
 void inOrder(struct node* treePtr);
 void delete_tree(struct node** treePtr);
-
+//takes few number and does binary search tree. then delete right sub-tree of root node
 int main() {
 	int temp = 0;
 	struct node* treePtr = NULL;
@@ -94,10 +94,15 @@ void inOrder(struct node* treePtr)
 		inOrder(treePtr->rightPtr);
 	}
 }
-
+//initially, it's pre-order. But it does not work for deletion
 void delete_tree(struct node** treePtr)
 {
-       free(*treePtr);
-	   delete_tree(&((*treePtr)->leftPtr));
-       delete_tree(&((*treePtr)->rightPtr));
+	//if node exist
+	if ((*treePtr) != NULL)
+	{
+	   delete_tree(&((*treePtr)->leftPtr));//look left
+       delete_tree(&((*treePtr)->rightPtr));//look right
+	   free(*treePtr);//visit node
+	   (*treePtr) = NULL;//tell the tree it's pointing to nothing
+	}   
 }
